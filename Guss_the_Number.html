@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Game</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: black;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            center {
+                background-color: lightblue;
+                color: black;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            }
+            h1 {
+                color:blue;
+            }
+            input {
+                width: 130px;
+                margin: 10px 0;
+                padding: 10px;
+                font-size: 16px;
+            }
+            button {
+                padding: 10px 20px;
+                background-color:rgb(30, 247, 30);
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: lightgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>Guess the Number from 1 to 10</h1>
+            <input type="number" id="one" min="1" max="10" placeholder="Enter a number">
+            <button onclick="game()">Check</button>
+            <p id="p">Try guessing the number!</p>
+            <p id="Score">Score: 10</p>
+            <button onclick="Retry()">Retry</button>
+        </center>
+    </body>
+    <script>
+        var a = document.getElementById("one");
+        var par = document.getElementById("p");
+        var Score = document.getElementById("Score");
+        var b = Math.floor(Math.random() * 10) + 1;
+        var score = 10;
+        console.log("Random number", b);
+
+        function game() {
+            var avalue = parseInt(a.value); 
+            if (avalue === b) {
+                par.textContent = "Correct! You guessed it!";
+                alert("You win!");
+                Score.textContent = "Your Score is: " + score;
+            } else {
+                score=score-1;
+                    alert("Wrong Number. Try again!");
+                    par.textContent = "Wrong, guess again.";
+                    Score.textContent = "Score: " + score;
+                } 
+        }
+        function Retry(){ 
+                 b = Math.floor(Math.random() * 10) + 1;
+                score = 10;
+                console.log("New random number:", b);
+                a.value = "";
+                par.textContent = "Try guessing the number!";
+                Score.textContent = "Score: " + score;
+
+
+        }
+    </script>
+</html>
